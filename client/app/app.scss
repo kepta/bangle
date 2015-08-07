@@ -6,12 +6,38 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 /**
  * App-wide Styles
  */
+$backgroundColor :  rgb(255,253,245);
 
-.browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+  // For Google Chrome
+  ::-webkit-scrollbar {
+    width:  $size;
+    height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+@include scrollbars(.3em, slategray);
+body {
+  background: $backgroundColor;
+  height:100%;
+  margin: 0px;
+  padding: 0px;
+
+}
+
+ng-md-icon svg {
+  transform: translate3d(0, 25%, 0);
 }
 
 /* Responsive: Portrait tablets and up */
@@ -24,4 +50,9 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 // Component styles are injected through grunt
 // injector
 @import 'main/main.scss';
+@import 'contacts/contacts.scss';
+@import 'dump/dump.scss';
+@import 'navbar/navbar.scss';
+@import 'wells/wells.scss';
 // endinjector
+
